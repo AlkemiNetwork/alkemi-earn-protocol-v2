@@ -1,0 +1,520 @@
+{
+  "contractName": "ChainLinkInterface",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "isChainlinkContractPaused",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        }
+      ],
+      "name": "getAssetPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"}],\"name\":\"getAssetPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isChainlinkContractPaused\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"getAssetPrice(address)\":{\"notice\":\"Returns the latest price scaled to 1e18 scale\"},\"isChainlinkContractPaused()\":{\"notice\":\"Returns false if the contract is paused\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/ChainLinkInterface.sol\":\"ChainLinkInterface\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":800},\"remappings\":[]},\"sources\":{\"project:/contracts/ChainLinkInterface.sol\":{\"keccak256\":\"0x3b60af7ef8110888753f5b57f6ae1c18ff376c8335d3ac69ca7d358a19d05bc7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://583d3ce9a83399d5899c722186ce3980460edc21f9bd0619fc506d57bdde7ffc\",\"dweb:/ipfs/QmVqA6tnNyRsagWmDZoGmJNbKFQME1dQdXcHR7c1pPXH9L\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity 0.8.11;\n\ninterface ChainLinkInterface{\n\n    /**\n     * Returns false if the contract is paused\n     */\n    function isChainlinkContractPaused() external view returns(bool);\n\n     /**\n     * Returns the latest price scaled to 1e18 scale\n     */\n    function getAssetPrice(address asset) external view returns (uint256, uint8);\n}",
+  "sourcePath": "/Users/preethisjv/Documents/Alkemi/githubUpload/project-alkemi-alkemi-earn-protocol-v2-d96569adc8c7 2/contracts/ChainLinkInterface.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/ChainLinkInterface.sol",
+    "exportedSymbols": {
+      "ChainLinkInterface": [
+        11840
+      ]
+    },
+    "id": 11841,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 11823,
+        "literals": [
+          "solidity",
+          "0.8",
+          ".11"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:11"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ChainLinkInterface",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 11840,
+        "linearizedBaseContracts": [
+          11840
+        ],
+        "name": "ChainLinkInterface",
+        "nameLocation": "67:18:11",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 11824,
+              "nodeType": "StructuredDocumentation",
+              "src": "92:58:11",
+              "text": " Returns false if the contract is paused"
+            },
+            "functionSelector": "de4162d4",
+            "id": 11829,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isChainlinkContractPaused",
+            "nameLocation": "164:25:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11825,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "189:2:11"
+            },
+            "returnParameters": {
+              "id": 11828,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11827,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11829,
+                  "src": "214:4:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 11826,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "214:4:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "213:6:11"
+            },
+            "scope": 11840,
+            "src": "155:65:11",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 11830,
+              "nodeType": "StructuredDocumentation",
+              "src": "227:64:11",
+              "text": " Returns the latest price scaled to 1e18 scale"
+            },
+            "functionSelector": "b3596f07",
+            "id": 11839,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAssetPrice",
+            "nameLocation": "305:13:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11833,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11832,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nameLocation": "327:5:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11839,
+                  "src": "319:13:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 11831,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "319:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "318:15:11"
+            },
+            "returnParameters": {
+              "id": 11838,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11835,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11839,
+                  "src": "357:7:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11834,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "357:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11837,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11839,
+                  "src": "366:5:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 11836,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "366:5:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "356:16:11"
+            },
+            "scope": 11840,
+            "src": "296:77:11",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 11841,
+        "src": "57:318:11",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:343:11"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/ChainLinkInterface.sol",
+    "exportedSymbols": {
+      "ChainLinkInterface": [
+        11840
+      ]
+    },
+    "id": 11841,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 11823,
+        "literals": [
+          "solidity",
+          "0.8",
+          ".11"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:11"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ChainLinkInterface",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 11840,
+        "linearizedBaseContracts": [
+          11840
+        ],
+        "name": "ChainLinkInterface",
+        "nameLocation": "67:18:11",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 11824,
+              "nodeType": "StructuredDocumentation",
+              "src": "92:58:11",
+              "text": " Returns false if the contract is paused"
+            },
+            "functionSelector": "de4162d4",
+            "id": 11829,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isChainlinkContractPaused",
+            "nameLocation": "164:25:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11825,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "189:2:11"
+            },
+            "returnParameters": {
+              "id": 11828,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11827,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11829,
+                  "src": "214:4:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 11826,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "214:4:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "213:6:11"
+            },
+            "scope": 11840,
+            "src": "155:65:11",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 11830,
+              "nodeType": "StructuredDocumentation",
+              "src": "227:64:11",
+              "text": " Returns the latest price scaled to 1e18 scale"
+            },
+            "functionSelector": "b3596f07",
+            "id": 11839,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAssetPrice",
+            "nameLocation": "305:13:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11833,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11832,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nameLocation": "327:5:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11839,
+                  "src": "319:13:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 11831,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "319:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "318:15:11"
+            },
+            "returnParameters": {
+              "id": 11838,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11835,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11839,
+                  "src": "357:7:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11834,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "357:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11837,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11839,
+                  "src": "366:5:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 11836,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "366:5:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "356:16:11"
+            },
+            "scope": 11840,
+            "src": "296:77:11",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 11841,
+        "src": "57:318:11",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:343:11"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.11+commit.d7f03943.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.5",
+  "updatedAt": "2022-06-07T16:43:46.948Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "getAssetPrice(address)": {
+        "notice": "Returns the latest price scaled to 1e18 scale"
+      },
+      "isChainlinkContractPaused()": {
+        "notice": "Returns false if the contract is paused"
+      }
+    },
+    "version": 1
+  }
+}

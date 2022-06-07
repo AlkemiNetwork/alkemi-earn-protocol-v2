@@ -1,0 +1,174 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.11;
+
+import "./AggregatorV3Interface.sol";
+import "./EIP20Interface.sol";
+import "./ChainLinkInterface.sol";
+import {Error} from "./ErrorReporter.sol";
+
+contract ChainLink is ChainLinkInterface{
+    mapping(address => AggregatorV3Interface) internal priceContractMapping;
+    address public admin;
+    bool public paused = false;
+    address public wethAddressVerified;
+    address public wethAddressPublic;
+    AggregatorV3Interface public USDETHPriceFeed;
+    uint256 constant expScale = 10**18;
+    uint8 constant eighteen = 18;
+
+    /**
+     * Sets the admin
+     * Add assets and set Weth Address using their own functions
+     */
+    constructor() {
+        admin = msg.sender;
+    }
+
+    /**
+     * Modifier to restrict functions only by admins
+     */
+    modifier onlyAdmin() {
+        require(
+            msg.sender == admin,
+            Error.UNAUTHORIZED
+        );
+        _;
+    }
+
+    /**
+     * Event declarations for all the operations of this contract
+     */
+    event assetAdded(
+        address indexed assetAddress,
+        address indexed priceFeedContract
+    );
+    event assetRemoved(address indexed assetAddress);
+    event adminChanged(address indexed oldAdmin, address indexed newAdmin);
+    event verifiedWethAddressSet(address indexed wethAddressVerified);
+    event publicWethAddressSet(address indexed wethAddressPublic);
+    event contractPausedOrUnpaused(bool currentStatus);
+
+    /**
+     * Allows admin to add a new asset for price tracking
+     */
+    function addAsset(address assetAddress, address priceFeedContract)
+        public
+        onlyAdmin
+    {
+        require(
+            assetAddress != address(0) && priceFeedContract != address(0),
+            Error.ADDRESS_CANNOT_BE_0X00
+        );
+        priceContractMapping[assetAddress] = AggregatorV3Interface(
+            priceFeedContract
+        );
+        emit assetAdded(assetAddress, priceFeedContract);
+    }
+
+    /**
+     * Allows admin to remove an existing asset from price tracking
+     */
+    function removeAsset(address assetAddress) public onlyAdmin {
+        require(
+            assetAddress != address(0),
+            Error.ADDRESS_CANNOT_BE_0X00
+        );
+        priceContractMapping[assetAddress] = AggregatorV3Interface(address(0));
+        emit assetRemoved(assetAddress);
+    }
+
+    /**
+     * Allows admin to change the admin of the contract
+     */
+    function changeAdmin(address newAdmin) public onlyAdmin {
+        require(
+            newAdmin != address(0),
+            Error.ADDRESS_CANNOT_BE_0X00
+        );
+        emit adminChanged(admin, newAdmin);
+        admin = newAdmin;
+    }
+
+    /**
+     * Allows admin to set the weth address for verified protocol
+     */
+    function setWethAddressVerified(address _wethAddressVerified) public onlyAdmin {
+        require(_wethAddressVerified != address(0), Error.ADDRESS_CANNOT_BE_0X00);
+        wethAddressVerified = _wethAddressVerified;
+        emit verifiedWethAddressSet(_wethAddressVerified);
+    }
+
+    /**
+     * Allows admin to set the weth address for public protocol
+     */
+    function setWethAddressPublic(address _wethAddressPublic) public onlyAdmin {
+        require(_wethAddressPublic != address(0), Error.ADDRESS_CANNOT_BE_0X00);
+        wethAddressPublic = _wethAddressPublic;
+        emit publicWethAddressSet(_wethAddressPublic);
+    }
+
+    /**
+     * Allows admin to pause and unpause the contract
+     */
+    function togglePause() public onlyAdmin {
+        if (paused) {
+            paused = false;
+            emit contractPausedOrUnpaused(false);
+        } else {
+            paused = true;
+            emit contractPausedOrUnpaused(true);
+        }
+    }
+
+    /**
+     * Returns the latest price scaled to 1e18 scale
+     */
+    function getAssetPrice(address asset) external virtual view returns (uint256, uint8) {
+        // Return 1 * 10^18 for WETH, otherwise return actual price
+        if (!paused) {
+            if ( asset == wethAddressVerified || asset == wethAddressPublic ){
+                return (expScale, eighteen);
+            }
+        }
+        // Capture the decimals in the ERC20 token
+        uint8 assetDecimals = EIP20Interface(asset).decimals();
+        if (!paused && address(priceContractMapping[asset]) != address(0)) {
+            (
+                uint80 roundID,
+                int256 price,
+                uint256 startedAt,
+                uint256 timeStamp,
+                uint80 answeredInRound
+            ) = priceContractMapping[asset].latestRoundData();
+            startedAt; // To avoid compiler warnings for unused local variable
+            // If the price data was not refreshed for the past 1 day, prices are considered stale
+            // This threshold is the maximum Chainlink uses to update the price feeds
+            require(timeStamp > (block.timestamp - 86500 seconds), "Stale data");
+            // If answeredInRound is less than roundID, prices are considered stale
+            require(answeredInRound >= roundID, "Stale Data");
+            if (price > 0) {
+                // Magnify the result based on decimals
+                return (uint256(price), assetDecimals);
+            } else {
+                return (0, assetDecimals);
+            }
+        } else {
+            return (0, assetDecimals);
+        }
+    }
+
+    /**
+     * Returns false if the contract is paused
+     */
+    function isChainlinkContractPaused() external view returns(bool){
+        return paused;
+    }
+
+    
+    receive() external payable {
+        require(
+            payable(msg.sender).send(msg.value),
+            Error.INTERNAL_EXCEPTION
+        );
+    }
+}

@@ -1,0 +1,1068 @@
+{
+  "contractName": "RewardControlInterface",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "market",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "supplier",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "isVerified",
+          "type": "bool"
+        }
+      ],
+      "name": "refreshAlkSupplyIndex",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "market",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "borrower",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "isVerified",
+          "type": "bool"
+        }
+      ],
+      "name": "refreshAlkBorrowIndex",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "holder",
+          "type": "address"
+        }
+      ],
+      "name": "claimAlk",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "holder",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "market",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "isVerified",
+          "type": "bool"
+        }
+      ],
+      "name": "claimAlk",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"holder\",\"type\":\"address\"}],\"name\":\"claimAlk\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"holder\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"market\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"isVerified\",\"type\":\"bool\"}],\"name\":\"claimAlk\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"market\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"borrower\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"isVerified\",\"type\":\"bool\"}],\"name\":\"refreshAlkBorrowIndex\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"market\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"supplier\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"isVerified\",\"type\":\"bool\"}],\"name\":\"refreshAlkSupplyIndex\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"claimAlk(address)\":{\"params\":{\"holder\":\"The address to claim ALK for\"}},\"claimAlk(address,address,bool)\":{\"params\":{\"holder\":\"The address to claim ALK for\",\"isVerified\":\"Verified / Public protocol\",\"market\":\"The address of the market to refresh the indexes for\"}},\"refreshAlkBorrowIndex(address,address,bool)\":{\"params\":{\"borrower\":\"The address of the borrower to distribute ALK to\",\"isVerified\":\"Verified / Public protocol\",\"market\":\"The market whose borrow index to update\"}},\"refreshAlkSupplyIndex(address,address,bool)\":{\"params\":{\"isVerified\":\"Verified / Public protocol\",\"market\":\"The market whose supply index to update\",\"supplier\":\"The address of the supplier to distribute ALK to\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"claimAlk(address)\":{\"notice\":\"Claim all the ALK accrued by holder in all markets\"},\"claimAlk(address,address,bool)\":{\"notice\":\"Claim all the ALK accrued by holder by refreshing the indexes on the specified market only\"},\"refreshAlkBorrowIndex(address,address,bool)\":{\"notice\":\"Refresh ALK borrow index for the specified market and borrower\"},\"refreshAlkSupplyIndex(address,address,bool)\":{\"notice\":\"Refresh ALK supply index for the specified market and supplier\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/RewardControlInterface.sol\":\"RewardControlInterface\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":800},\"remappings\":[]},\"sources\":{\"project:/contracts/RewardControlInterface.sol\":{\"keccak256\":\"0x4a76fc1741f4cbc76aee0baaf045d07b2bca9498b95801702bfd5530d087a826\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://645641787a80ef3ca9e642626cb41ae3e2a56fdea68a1e7f8a707636ed887f61\",\"dweb:/ipfs/QmQrnoyD8HqJXMzjbkgsPVXcwrPwiUwtFCP8xuGaWy8dE5\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity 0.8.11;\n\ninterface RewardControlInterface {\n    /**\n     * @notice Refresh ALK supply index for the specified market and supplier\n     * @param market The market whose supply index to update\n     * @param supplier The address of the supplier to distribute ALK to\n     * @param isVerified Verified / Public protocol\n     */\n    function refreshAlkSupplyIndex(\n        address market,\n        address supplier,\n        bool isVerified\n    ) external;\n\n    /**\n     * @notice Refresh ALK borrow index for the specified market and borrower\n     * @param market The market whose borrow index to update\n     * @param borrower The address of the borrower to distribute ALK to\n     * @param isVerified Verified / Public protocol\n     */\n    function refreshAlkBorrowIndex(\n        address market,\n        address borrower,\n        bool isVerified\n    ) external;\n\n    /**\n     * @notice Claim all the ALK accrued by holder in all markets\n     * @param holder The address to claim ALK for\n     */\n    function claimAlk(address holder) external;\n\n    /**\n     * @notice Claim all the ALK accrued by holder by refreshing the indexes on the specified market only\n     * @param holder The address to claim ALK for\n     * @param market The address of the market to refresh the indexes for\n     * @param isVerified Verified / Public protocol\n     */\n    function claimAlk(\n        address holder,\n        address market,\n        bool isVerified\n    ) external;\n}",
+  "sourcePath": "/Users/preethisjv/Documents/Alkemi/githubUpload/project-alkemi-alkemi-earn-protocol-v2-d96569adc8c7 2/contracts/RewardControlInterface.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/RewardControlInterface.sol",
+    "exportedSymbols": {
+      "RewardControlInterface": [
+        16054
+      ]
+    },
+    "id": 16055,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 16017,
+        "literals": [
+          "solidity",
+          "0.8",
+          ".11"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:20"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "RewardControlInterface",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 16054,
+        "linearizedBaseContracts": [
+          16054
+        ],
+        "name": "RewardControlInterface",
+        "nameLocation": "67:22:20",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 16018,
+              "nodeType": "StructuredDocumentation",
+              "src": "96:274:20",
+              "text": " @notice Refresh ALK supply index for the specified market and supplier\n @param market The market whose supply index to update\n @param supplier The address of the supplier to distribute ALK to\n @param isVerified Verified / Public protocol"
+            },
+            "functionSelector": "3fae5d2b",
+            "id": 16027,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "refreshAlkSupplyIndex",
+            "nameLocation": "384:21:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 16025,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 16020,
+                  "mutability": "mutable",
+                  "name": "market",
+                  "nameLocation": "423:6:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16027,
+                  "src": "415:14:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 16019,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "415:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16022,
+                  "mutability": "mutable",
+                  "name": "supplier",
+                  "nameLocation": "447:8:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16027,
+                  "src": "439:16:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 16021,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "439:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16024,
+                  "mutability": "mutable",
+                  "name": "isVerified",
+                  "nameLocation": "470:10:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16027,
+                  "src": "465:15:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 16023,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "465:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "405:81:20"
+            },
+            "returnParameters": {
+              "id": 16026,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "495:0:20"
+            },
+            "scope": 16054,
+            "src": "375:121:20",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 16028,
+              "nodeType": "StructuredDocumentation",
+              "src": "502:274:20",
+              "text": " @notice Refresh ALK borrow index for the specified market and borrower\n @param market The market whose borrow index to update\n @param borrower The address of the borrower to distribute ALK to\n @param isVerified Verified / Public protocol"
+            },
+            "functionSelector": "457bb263",
+            "id": 16037,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "refreshAlkBorrowIndex",
+            "nameLocation": "790:21:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 16035,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 16030,
+                  "mutability": "mutable",
+                  "name": "market",
+                  "nameLocation": "829:6:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16037,
+                  "src": "821:14:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 16029,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "821:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16032,
+                  "mutability": "mutable",
+                  "name": "borrower",
+                  "nameLocation": "853:8:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16037,
+                  "src": "845:16:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 16031,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "845:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16034,
+                  "mutability": "mutable",
+                  "name": "isVerified",
+                  "nameLocation": "876:10:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16037,
+                  "src": "871:15:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 16033,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "871:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "811:81:20"
+            },
+            "returnParameters": {
+              "id": 16036,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "901:0:20"
+            },
+            "scope": 16054,
+            "src": "781:121:20",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 16038,
+              "nodeType": "StructuredDocumentation",
+              "src": "908:127:20",
+              "text": " @notice Claim all the ALK accrued by holder in all markets\n @param holder The address to claim ALK for"
+            },
+            "functionSelector": "71d6e892",
+            "id": 16043,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "claimAlk",
+            "nameLocation": "1049:8:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 16041,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 16040,
+                  "mutability": "mutable",
+                  "name": "holder",
+                  "nameLocation": "1066:6:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16043,
+                  "src": "1058:14:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 16039,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1058:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1057:16:20"
+            },
+            "returnParameters": {
+              "id": 16042,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1082:0:20"
+            },
+            "scope": 16054,
+            "src": "1040:43:20",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 16044,
+              "nodeType": "StructuredDocumentation",
+              "src": "1089:293:20",
+              "text": " @notice Claim all the ALK accrued by holder by refreshing the indexes on the specified market only\n @param holder The address to claim ALK for\n @param market The address of the market to refresh the indexes for\n @param isVerified Verified / Public protocol"
+            },
+            "functionSelector": "d6ef0bef",
+            "id": 16053,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "claimAlk",
+            "nameLocation": "1396:8:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 16051,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 16046,
+                  "mutability": "mutable",
+                  "name": "holder",
+                  "nameLocation": "1422:6:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16053,
+                  "src": "1414:14:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 16045,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1414:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16048,
+                  "mutability": "mutable",
+                  "name": "market",
+                  "nameLocation": "1446:6:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16053,
+                  "src": "1438:14:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 16047,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1438:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16050,
+                  "mutability": "mutable",
+                  "name": "isVerified",
+                  "nameLocation": "1467:10:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16053,
+                  "src": "1462:15:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 16049,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1462:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1404:79:20"
+            },
+            "returnParameters": {
+              "id": 16052,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1492:0:20"
+            },
+            "scope": 16054,
+            "src": "1387:106:20",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 16055,
+        "src": "57:1438:20",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:1463:20"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/RewardControlInterface.sol",
+    "exportedSymbols": {
+      "RewardControlInterface": [
+        16054
+      ]
+    },
+    "id": 16055,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 16017,
+        "literals": [
+          "solidity",
+          "0.8",
+          ".11"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:20"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "RewardControlInterface",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 16054,
+        "linearizedBaseContracts": [
+          16054
+        ],
+        "name": "RewardControlInterface",
+        "nameLocation": "67:22:20",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 16018,
+              "nodeType": "StructuredDocumentation",
+              "src": "96:274:20",
+              "text": " @notice Refresh ALK supply index for the specified market and supplier\n @param market The market whose supply index to update\n @param supplier The address of the supplier to distribute ALK to\n @param isVerified Verified / Public protocol"
+            },
+            "functionSelector": "3fae5d2b",
+            "id": 16027,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "refreshAlkSupplyIndex",
+            "nameLocation": "384:21:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 16025,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 16020,
+                  "mutability": "mutable",
+                  "name": "market",
+                  "nameLocation": "423:6:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16027,
+                  "src": "415:14:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 16019,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "415:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16022,
+                  "mutability": "mutable",
+                  "name": "supplier",
+                  "nameLocation": "447:8:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16027,
+                  "src": "439:16:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 16021,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "439:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16024,
+                  "mutability": "mutable",
+                  "name": "isVerified",
+                  "nameLocation": "470:10:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16027,
+                  "src": "465:15:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 16023,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "465:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "405:81:20"
+            },
+            "returnParameters": {
+              "id": 16026,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "495:0:20"
+            },
+            "scope": 16054,
+            "src": "375:121:20",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 16028,
+              "nodeType": "StructuredDocumentation",
+              "src": "502:274:20",
+              "text": " @notice Refresh ALK borrow index for the specified market and borrower\n @param market The market whose borrow index to update\n @param borrower The address of the borrower to distribute ALK to\n @param isVerified Verified / Public protocol"
+            },
+            "functionSelector": "457bb263",
+            "id": 16037,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "refreshAlkBorrowIndex",
+            "nameLocation": "790:21:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 16035,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 16030,
+                  "mutability": "mutable",
+                  "name": "market",
+                  "nameLocation": "829:6:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16037,
+                  "src": "821:14:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 16029,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "821:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16032,
+                  "mutability": "mutable",
+                  "name": "borrower",
+                  "nameLocation": "853:8:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16037,
+                  "src": "845:16:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 16031,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "845:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16034,
+                  "mutability": "mutable",
+                  "name": "isVerified",
+                  "nameLocation": "876:10:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16037,
+                  "src": "871:15:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 16033,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "871:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "811:81:20"
+            },
+            "returnParameters": {
+              "id": 16036,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "901:0:20"
+            },
+            "scope": 16054,
+            "src": "781:121:20",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 16038,
+              "nodeType": "StructuredDocumentation",
+              "src": "908:127:20",
+              "text": " @notice Claim all the ALK accrued by holder in all markets\n @param holder The address to claim ALK for"
+            },
+            "functionSelector": "71d6e892",
+            "id": 16043,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "claimAlk",
+            "nameLocation": "1049:8:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 16041,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 16040,
+                  "mutability": "mutable",
+                  "name": "holder",
+                  "nameLocation": "1066:6:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16043,
+                  "src": "1058:14:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 16039,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1058:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1057:16:20"
+            },
+            "returnParameters": {
+              "id": 16042,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1082:0:20"
+            },
+            "scope": 16054,
+            "src": "1040:43:20",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 16044,
+              "nodeType": "StructuredDocumentation",
+              "src": "1089:293:20",
+              "text": " @notice Claim all the ALK accrued by holder by refreshing the indexes on the specified market only\n @param holder The address to claim ALK for\n @param market The address of the market to refresh the indexes for\n @param isVerified Verified / Public protocol"
+            },
+            "functionSelector": "d6ef0bef",
+            "id": 16053,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "claimAlk",
+            "nameLocation": "1396:8:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 16051,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 16046,
+                  "mutability": "mutable",
+                  "name": "holder",
+                  "nameLocation": "1422:6:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16053,
+                  "src": "1414:14:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 16045,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1414:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16048,
+                  "mutability": "mutable",
+                  "name": "market",
+                  "nameLocation": "1446:6:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16053,
+                  "src": "1438:14:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 16047,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1438:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16050,
+                  "mutability": "mutable",
+                  "name": "isVerified",
+                  "nameLocation": "1467:10:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16053,
+                  "src": "1462:15:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 16049,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1462:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1404:79:20"
+            },
+            "returnParameters": {
+              "id": 16052,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1492:0:20"
+            },
+            "scope": 16054,
+            "src": "1387:106:20",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 16055,
+        "src": "57:1438:20",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:1463:20"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.11+commit.d7f03943.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.5",
+  "updatedAt": "2022-06-07T16:43:47.031Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "claimAlk(address)": {
+        "params": {
+          "holder": "The address to claim ALK for"
+        }
+      },
+      "claimAlk(address,address,bool)": {
+        "params": {
+          "holder": "The address to claim ALK for",
+          "isVerified": "Verified / Public protocol",
+          "market": "The address of the market to refresh the indexes for"
+        }
+      },
+      "refreshAlkBorrowIndex(address,address,bool)": {
+        "params": {
+          "borrower": "The address of the borrower to distribute ALK to",
+          "isVerified": "Verified / Public protocol",
+          "market": "The market whose borrow index to update"
+        }
+      },
+      "refreshAlkSupplyIndex(address,address,bool)": {
+        "params": {
+          "isVerified": "Verified / Public protocol",
+          "market": "The market whose supply index to update",
+          "supplier": "The address of the supplier to distribute ALK to"
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "claimAlk(address)": {
+        "notice": "Claim all the ALK accrued by holder in all markets"
+      },
+      "claimAlk(address,address,bool)": {
+        "notice": "Claim all the ALK accrued by holder by refreshing the indexes on the specified market only"
+      },
+      "refreshAlkBorrowIndex(address,address,bool)": {
+        "notice": "Refresh ALK borrow index for the specified market and borrower"
+      },
+      "refreshAlkSupplyIndex(address,address,bool)": {
+        "notice": "Refresh ALK supply index for the specified market and supplier"
+      }
+    },
+    "version": 1
+  }
+}
